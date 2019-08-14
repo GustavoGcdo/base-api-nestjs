@@ -1,6 +1,7 @@
 import { Report } from '../notifiable/report';
 import { IValidator } from '../interfaces/notifiable/validator.interface';
 import { IReport } from '../interfaces/notifiable/report.interface';
+import { Config } from '../constants/Config';
 
 export class Validator implements IValidator {
   reports: IReport[];
@@ -59,8 +60,7 @@ export class Validator implements IValidator {
   }
 
   isNotANumber(value: string, name: string, message: string) {
-    const RADIX = 10;
-    if (isNaN(parseInt(value, RADIX))) {
+    if (isNaN(parseInt(value, Config.DEFALT_RADIX))) {
       this.reports.push(new Report(name, message));
     }
   }
