@@ -4,10 +4,10 @@ import { ICreateUserHandler } from '../interfaces/handlers/user/createUserHandle
 
 @Controller('/v1/users')
 export class UserController {
-  constructor(@Inject('IUserHandler') private readonly service: ICreateUserHandler) {}
+  constructor(@Inject('ICreateUserHandler') private readonly createUserHandler: ICreateUserHandler) {}
 
   @Post()
   async create(@Body() model: CreateUserDto) {
-    return await this.service.handle(model);
+    return await this.createUserHandler.handle(model);
   }
 }
