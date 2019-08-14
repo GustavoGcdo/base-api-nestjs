@@ -1,5 +1,6 @@
 import { IUserRepository } from '../../../src/core/interfaces/repositories/userRepository.interface';
 import { User } from '../../../src/core/models/entities/user';
+import { PaginateOptions } from '../../../src/core/models/valueObjects/paginateOptions';
 
 export class FakeUserRepository implements IUserRepository {
   users: User[] = [];
@@ -15,5 +16,16 @@ export class FakeUserRepository implements IUserRepository {
   async create(model: User): Promise<User> {
     this.users.push(model);
     return model;
+  }
+
+  async find(
+    filter?: User,
+    paginateOptions?: PaginateOptions,
+  ): Promise<User[]> {
+    return this.users;
+  }
+
+  async count(filter?: User): Promise<number> {
+    return this.users.length;
   }
 }
