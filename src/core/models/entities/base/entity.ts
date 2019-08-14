@@ -1,3 +1,4 @@
-export interface Entity {
+
+export interface Entity{
     _id?: string;
 }
