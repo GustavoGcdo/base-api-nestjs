@@ -1,22 +1,22 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { IResult } from '../../shared/interfaces/result/result.interface';
-import { Report } from '../../shared/notifiable/report';
-import { Result } from '../../shared/result/result';
-import { CreateUserContract } from '../contracts/user/createUser.contract';
-import { CreateUserDto } from '../dtos/user/createUser.dto';
-import { IUserHandler } from '../interfaces/handlers/userHandler.interface';
-import { IUserRepository } from '../interfaces/repositories/userRepository.interface';
-import { IEmailService } from '../interfaces/services/emailService.interface';
-import { User } from '../models/entities/user';
+import { IResult } from '../../../shared/interfaces/result/result.interface';
+import { Report } from '../../../shared/notifiable/report';
+import { Result } from '../../../shared/result/result';
+import { CreateUserContract } from '../../contracts/user/createUser.contract';
+import { CreateUserDto } from '../../dtos/user/createUser.dto';
+import { ICreateUserHandler } from '../../interfaces/handlers/user/createUserHandler.interface';
+import { IUserRepository } from '../../interfaces/repositories/userRepository.interface';
+import { IEmailService } from '../../interfaces/services/emailService.interface';
+import { User } from '../../models/entities/user';
 
 @Injectable()
-export class UserHandler implements IUserHandler {
+export class CreateUserHandler implements ICreateUserHandler {
   constructor(
     @Inject('IUserRepository') private readonly repository: IUserRepository,
     @Inject('IEmailService') private readonly emailService: IEmailService,
   ) {}
 
-  async create(model: CreateUserDto): Promise<IResult> {
+  async handle(model: CreateUserDto): Promise<IResult> {
     const contract = new CreateUserContract();
 
     // 1. Fail fast validations
