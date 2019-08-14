@@ -1,10 +1,10 @@
 import { Body, Controller, Post, Inject } from '@nestjs/common';
 import { CreateUserDto } from '../dtos/user/createUser.dto';
-import { IUserService } from '../interfaces/services/userService.interface';
+import { IUserHandler } from '../interfaces/handlers/userHandler.interface';
 
 @Controller('/v1/users')
 export class UserController {
-  constructor(@Inject('IUserService') private readonly service: IUserService) {}
+  constructor(@Inject('IUserHandler') private readonly service: IUserHandler) {}
 
   @Post()
   async create(@Body() model: CreateUserDto) {

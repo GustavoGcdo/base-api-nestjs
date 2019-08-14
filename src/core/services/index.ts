@@ -1,3 +1,5 @@
-import { UserService } from './user.service';
+import { EmailService } from './email.service';
 
-export const Services = [{ provide: 'IUserService', useClass: UserService }];
+export const Services = [
+  { provide: 'IEmailService', useClass: EmailService },
+];
