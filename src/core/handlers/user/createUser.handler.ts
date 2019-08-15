@@ -63,6 +63,7 @@ export class CreateUserHandler implements ICreateUserHandler {
 
     // 5. Cria um objeto de retorno
     const userReturn: User = {
+      _id: userCreated._id,
       name: userCreated.name,
       login: userCreated.login,
       email: userCreated.email,

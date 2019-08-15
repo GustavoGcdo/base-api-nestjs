@@ -1,6 +1,6 @@
 import { Result } from '../../../shared/result/result';
 import { PaginateUserDto } from '../../dtos/user/paginateUser.dto';
-import { BasePaginate } from '../../interfaces/handlers/base/BasePaginate';
+import { BasePaginate } from '../base/basePaginate';
 import { IPaginateUserHandler } from '../../interfaces/handlers/user/paginateHandler.interface';
 import { PaginateContract } from '../../contracts/base/paginate.contract';
 import { Report } from '../../../shared/notifiable/report';

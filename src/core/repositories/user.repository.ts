@@ -55,4 +55,8 @@ export class UserRepository implements IUserRepository {
   async update(id: string, model: User) {
     return await this.model.updateOne({ _id: id }, model);
   }
+
+  async remove(id: string) {
+    return await this.model.remove({ _id: id });
+  }
 }
