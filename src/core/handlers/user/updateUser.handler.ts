@@ -67,7 +67,18 @@ export class UpdateUserHandler implements IUpdateUserHandler {
       );
     }
 
-    await this.repository.update(id, model);
+    const [user] = await this.repository.find({_id: id});
+
+    const userUpdate: User = {
+      name: user.name,
+      login: user.login,
+      email: user.email,
+      isAdmin: user.isAdmin,
+      password: user.password,
+      ...model
+    }
+
+    await this.repository.update(id, userUpdate);
 
     // 6. Envia email
     this.emailService.send(

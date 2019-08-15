@@ -4,7 +4,7 @@ import { IUserRepository } from '../../../../src/core/interfaces/repositories/us
 import { Config } from '../../../../src/shared/constants/Config';
 import { FakeUserRepository } from '../../../mocks/repositories/fakeuser.repository';
 
-describe('CreateUserHandler', () => {
+describe('PaginateUserHandler', () => {
   let repository: IUserRepository;
   let handler: PaginateUserHandler;
 
