@@ -5,6 +5,10 @@ import { PaginateOptions } from '../../../src/core/models/valueObjects/paginateO
 export class FakeUserRepository implements IUserRepository {
   users: User[] = [];
 
+  update(id: string, model: User): Promise<void> {
+    throw new Error('Method not implemented.');
+  }
+
   async loginExists(login: string): Promise<boolean> {
     return this.users.find(u => u.login === login) ? true : false;
   }
@@ -18,7 +22,11 @@ export class FakeUserRepository implements IUserRepository {
     return model;
   }
 
-  async find(
+  async find(filter?: any): Promise<User[]> {
+    return this.users;
+  }
+
+  async findPaginate(
     filter?: User,
     paginateOptions?: PaginateOptions,
   ): Promise<User[]> {

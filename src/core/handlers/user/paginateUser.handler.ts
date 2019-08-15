@@ -54,7 +54,7 @@ export class PaginateUserHandler extends BasePaginate
     const filter = this.getFilters(model);
 
     // 4. Buscar as informacoes no banco
-    const data = await this.repository.find(filter, options);
+    const data = await this.repository.findPaginate(filter, options);
     const totalRegisters = await this.repository.count(filter);
 
     // 5. Cria um objeto de retorno da paginacao

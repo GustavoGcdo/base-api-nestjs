@@ -10,15 +10,27 @@ import { Config } from '../../shared/constants/Config';
 export class UserRepository implements IUserRepository {
   constructor(@InjectModel('User') private readonly model: Model<any>) {}
 
-  async find(
-    filter?: any,
+  async find(filter?): Promise<User[]> {
+    return await this.model.find(filter);
+  }
+
+  async findPaginate(
+    filter?,
     options: PaginateOptions = Config.DEFAULT_PAGINATE_OPTIONS,
-  ) {
-    return this.model
+  ): Promise<User[]> {
+    return await this.model
       .find(filter)
       .sort(options.sort)
       .skip(options.skip)
       .limit(options.limit);
+  }
+
+  async findByLogin(login: string): Promise<User[]> {
+    return this.model.find({ login });
+  }
+
+  async findByEmail(email: string): Promise<User[]> {
+    return this.model.find({ email });
   }
 
   async count(filter?: any) {
@@ -38,5 +50,9 @@ export class UserRepository implements IUserRepository {
   async create(model: User) {
     const data = await new this.model(model);
     return data.save();
+  }
+
+  async update(id: string, model: User) {
+    return await this.model.updateOne({ _id: id }, model);
   }
 }

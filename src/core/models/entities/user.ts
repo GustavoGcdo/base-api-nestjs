@@ -10,5 +10,5 @@ export interface User extends Entity {
   dataNascimento?: Date;
   preference?: Preference;
   isAdmin?: boolean;
-  profile?: Profile;
+  profile?: Profile | string;
 }

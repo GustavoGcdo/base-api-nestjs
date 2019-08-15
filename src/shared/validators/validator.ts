@@ -16,6 +16,18 @@ export class Validator implements IValidator {
     }
   }
 
+  isNotNull(value: any, name: string, message: string) {
+    if (value === null) {
+      this.reports.push(new Report(name, message));
+    }
+  }
+
+  isUndefined(value: any, name: string, message: string) {
+    if (value === undefined) {
+      this.reports.push(new Report(name, message));
+    }
+  }
+
   hasMinLen(value: string, min: number, name: string, message: string) {
     if (!value || value.length < min) {
       this.reports.push(new Report(name, message));
@@ -37,12 +49,6 @@ export class Validator implements IValidator {
   isEmail(value: any, name: string, message: string) {
     const reg = new RegExp(/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/);
     if (!reg.test(value)) {
-      this.reports.push(new Report(name, message));
-    }
-  }
-
-  isNotNull(value: any, name: string, message: string) {
-    if (!value.length) {
       this.reports.push(new Report(name, message));
     }
   }
