@@ -75,7 +75,7 @@ export class UpdateUserHandler implements IUpdateUserHandler {
       email: user.email,
       isAdmin: user.isAdmin,
       password: user.password,
-      ...model
+      ...model,
     }
 
     await this.repository.update(id, userUpdate);

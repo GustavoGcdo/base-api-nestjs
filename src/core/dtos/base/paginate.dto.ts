@@ -1,4 +1,4 @@
-export interface PaginateDto {
+export class PaginateDto {
   page?: string;
   limit?: string;
   sort?: any;

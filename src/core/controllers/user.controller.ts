@@ -6,7 +6,9 @@ import { ICreateUserHandler } from '../interfaces/handlers/user/createUserHandle
 import { IDeleteUserHandler } from '../interfaces/handlers/user/deleteUserHandler.interface';
 import { IPaginateUserHandler } from '../interfaces/handlers/user/paginateHandler.interface';
 import { IUpdateUserHandler } from '../interfaces/handlers/user/updateUserHandler.interface';
+import { ApiUseTags, ApiImplicitBody } from '@nestjs/swagger';
 
+@ApiUseTags('Users')
 @Controller('/v1/users')
 export class UserController {
   constructor(

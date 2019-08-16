@@ -1,6 +1,6 @@
 import { PaginateDto } from '../base/paginate.dto';
 
-export interface PaginateUserDto extends PaginateDto {
+export class PaginateUserDto extends PaginateDto {
   name?: string;
   login?: string;
   email?: string;
