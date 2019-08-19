@@ -10,19 +10,20 @@ import { Services } from './services';
 import { AuthService } from '../shared/services/auth.service';
 import { JwtStrategy } from '../shared/strategies/jwt.strategy';
 import { Jwt } from '../shared/constants/token';
+import { AuthController } from './controllers/auth.controller';
 
 @Module({
   imports: [
     PassportModule.register({ defaultStrategy: 'jwt' }),
     JwtModule.register({
-      secretOrPrivateKey: Jwt.secret,
+      secret: Jwt.SECRET,
       signOptions: {
-        expiresIn: 3600,
+        expiresIn: Jwt.EXPIRES_TIME,
       },
     }),
     MongooseModule.forFeature(Schemas),
   ],
-  controllers: [UserController],
+  controllers: [AuthController, UserController],
   providers: [
     AuthService,
     JwtStrategy,

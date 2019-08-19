@@ -1,4 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
+import { Md5 } from 'md5-typescript';
 import { IResult } from '../../../shared/interfaces/result/result.interface';
 import { Report } from '../../../shared/notifiable/report';
 import { Result } from '../../../shared/result/result';
@@ -49,12 +50,14 @@ export class CreateUserHandler implements ICreateUserHandler {
       );
     }
 
+    const pass = await Md5.init(`${model.password}${process.env.SALT_KEY}`);
+
     // 3. Gera o novo usuario, nutrição da entidade
     const newUser: User = {
       name: model.name,
       login: model.login,
       email: model.email,
-      password: model.password,
+      password: pass,
       isAdmin: false,
     };
 

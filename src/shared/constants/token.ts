@@ -1,3 +1,4 @@
 export class Jwt {
-  static secret: string = 'secretKey';
+  static SECRET: string = 'secretKey';
+  static EXPIRES_TIME: string | number = 3600;
 }
