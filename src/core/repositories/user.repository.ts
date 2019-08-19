@@ -19,7 +19,7 @@ export class UserRepository implements IUserRepository {
     options: PaginateOptions = Config.DEFAULT_PAGINATE_OPTIONS,
   ): Promise<User[]> {
     return await this.model
-      .find(filter)
+      .find(filter, 'name login email isAdmin profile')
       .sort(options.sort)
       .skip(options.skip)
       .limit(options.limit);
