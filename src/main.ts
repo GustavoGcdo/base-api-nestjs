@@ -10,6 +10,7 @@ async function bootstrap() {
   const options = new DocumentBuilder()
     .setTitle('Node api with nestjs ')
     .setDescription('This is an example of a scalable api architecture using nestjs.')
+    .addBearerAuth()
     .setVersion('1.0')
     .build();
   const document = SwaggerModule.createDocument(app, options);

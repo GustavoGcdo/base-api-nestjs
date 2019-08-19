@@ -1,5 +1,16 @@
-import { Body, Controller, Delete, Get, Inject, Param, Post, Put, Query, UseGuards } from '@nestjs/common';
-import { ApiUseTags } from '@nestjs/swagger';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Inject,
+  Param,
+  Post,
+  Put,
+  Query,
+  UseGuards,
+} from '@nestjs/common';
+import { ApiUseTags, ApiBearerAuth } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../../shared/guard/auth.guard';
 import { CreateUserDto } from '../dtos/user/createUser.dto';
 import { PaginateUserDto } from '../dtos/user/paginateUser.dto';
@@ -10,6 +21,7 @@ import { IPaginateUserHandler } from '../interfaces/handlers/user/paginateHandle
 import { IUpdateUserHandler } from '../interfaces/handlers/user/updateUserHandler.interface';
 
 @ApiUseTags('Users')
+@ApiBearerAuth()
 @Controller('/v1/users')
 export class UserController {
   constructor(
