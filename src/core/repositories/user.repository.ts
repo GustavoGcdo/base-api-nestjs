@@ -4,7 +4,7 @@ import { Model } from 'mongoose';
 import { IUserRepository } from '../interfaces/repositories/userRepository.interface';
 import { User } from '../models/entities/user';
 import { PaginateOptions } from '../models/valueObjects/paginateOptions';
-import { Config } from '../../shared/constants/Config';
+import { Config } from '../../shared/constants/config';
 
 @Injectable()
 export class UserRepository implements IUserRepository {
@@ -57,6 +57,6 @@ export class UserRepository implements IUserRepository {
   }
 
   async remove(id: string) {
-    return await this.model.remove({ _id: id });
+    return await this.model.deleteOne({ _id: id });
   }
 }

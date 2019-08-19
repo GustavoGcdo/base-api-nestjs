@@ -1,6 +1,6 @@
 import { PaginateDto } from '../../dtos/base/paginate.dto';
 import { PaginateOptions } from '../../models/valueObjects/paginateOptions';
-import { Config } from '../../../shared/constants/Config';
+import { Config } from '../../../shared/constants/config';
 
 export class BasePaginate {
   getPaginateOptions(model: PaginateDto): PaginateOptions {

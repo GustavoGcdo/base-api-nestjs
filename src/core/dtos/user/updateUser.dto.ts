@@ -1,5 +1,5 @@
 import { ApiModelPropertyOptional } from '@nestjs/swagger';
-import { Preference } from '../../models/entities/preference';
+
 export class UpdateUserDto {
   @ApiModelPropertyOptional()
   name?: string;
@@ -11,10 +11,10 @@ export class UpdateUserDto {
   email?: string;
 
   @ApiModelPropertyOptional()
-  dataNascimento?: Date;
+  dataNascimento?: string;
 
   @ApiModelPropertyOptional()
-  preference?: Preference;
+  preference?: string;
 
   @ApiModelPropertyOptional()
   isAdmin?: boolean;

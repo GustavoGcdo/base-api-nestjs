@@ -1,7 +1,7 @@
 import { PaginateUserDto } from '../../../../src/core/dtos/user/paginateUser.dto';
 import { PaginateUserHandler } from '../../../../src/core/handlers/user/paginateUser.handler';
 import { IUserRepository } from '../../../../src/core/interfaces/repositories/userRepository.interface';
-import { Config } from '../../../../src/shared/constants/Config';
+import { Config } from '../../../../src/shared/constants/config';
 import { FakeUserRepository } from '../../../mocks/repositories/fakeuser.repository';
 
 describe('PaginateUserHandler', () => {

@@ -2,7 +2,7 @@ import { IContract } from '../../../shared/interfaces/contracts/contract.interfa
 import { Notifiable } from '../../../shared/notifiable/notifiable';
 import { Validator } from '../../../shared/validators/validator';
 import { PaginateDto } from '../../dtos/base/paginate.dto';
-import { Config } from '../../../shared/constants/Config';
+import { Config } from '../../../shared/constants/config';
 
 export class PaginateContract extends Notifiable
   implements IContract<PaginateDto> {

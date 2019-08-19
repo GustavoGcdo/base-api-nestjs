@@ -7,8 +7,8 @@ export interface User extends Entity {
   login: string;
   email: string;
   password?: string;
-  dataNascimento?: Date;
-  preference?: Preference;
+  dataNascimento?: Date | string;
+  preference?: Preference | string;
   isAdmin?: boolean;
   profile?: Profile | string;
 }

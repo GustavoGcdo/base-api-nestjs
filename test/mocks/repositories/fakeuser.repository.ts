@@ -1,7 +1,8 @@
 import { IUserRepository } from '../../../src/core/interfaces/repositories/userRepository.interface';
 import { User } from '../../../src/core/models/entities/user';
 import { PaginateOptions } from '../../../src/core/models/valueObjects/paginateOptions';
-import { Config } from '../../../src/shared/constants/Config';
+import { Config } from '../../../src/shared/constants/config';
+import * as mongoose from 'mongoose';
 
 export class FakeUserRepository implements IUserRepository {
   users: User[] = [];
@@ -15,11 +16,8 @@ export class FakeUserRepository implements IUserRepository {
   }
 
   async create(model: User): Promise<User> {
-    const ultimoId =
-      this.users.length > 0 ? this.users[this.users.length - 1]._id : `${1}`;
-    const novoId = `${parseInt(ultimoId, Config.DEFALT_RADIX) + 1}`;
-    model._id = novoId;
-
+    const ultimoId = new mongoose.Types.ObjectId();
+    model._id = ultimoId.toHexString();
     this.users.push(model);
     return model;
   }
@@ -40,7 +38,9 @@ export class FakeUserRepository implements IUserRepository {
   }
 
   async remove(id: string): Promise<any> {
-    this.users = this.users.filter(user => !this.getUserByfilter(user, { _id: id }));
+    this.users = this.users.filter(
+      user => !this.getUserByfilter(user, { _id: id }),
+    );
     return true;
   }
 
